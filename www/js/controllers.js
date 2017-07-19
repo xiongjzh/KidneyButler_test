@@ -4304,7 +4304,10 @@ angular.module('kidney.controllers', ['ionic','kidney.services','ngResource','io
     })
     $scope.$on('gopingjia', function(event, args) {
         event.stopPropagation();
-        $state.go('tab.consult-comment',{counselId:$scope.params.counsel.counselId,doctorId:$scope.params.chatId,patientId:$scope.params.counsel.patientId.userId});
+        var content = arg[1].content;
+        if(content.counselId){
+            $state.go('tab.consult-comment',{counselId:content.counselId,doctorId:content.docId,patientId:$scope.params.UID});
+        }
     });
 
     // send message--------------------------------------------------------------------------------
